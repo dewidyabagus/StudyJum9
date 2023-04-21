@@ -23,8 +23,25 @@ func main() {
 		ctx.String(http.StatusOK, "Welcome To Home page")
 	})
 
-	// Autentikasi menggunakan basic auth
-	basicAuth := router.Group("/route2", gin.BasicAuth(basicAuthAccounts))
+	/*
+		Pembuatan routing
+		router.POST("/v1/login")
+		router.GET("/v1/profile")
+		...
+
+		Implementasi group routing
+		v1 := router.Group("/v1", middlewareAuth, middlewareWhitelist, dll)
+		v1.POST("/login") // Menggunakan middleware yang disertakan pada group routing
+	*/
+
+	/*
+		Autentikasi menggunakan basic auth, model auth menggunakan username dan password.
+		Penggunaan untuk komunikasi antar service, alternative API-KEY (header) key dan value
+	*/
+	// basicAuth := router.Group("/route2", gin.BasicAuth(basicAuthAccounts)) // Standart package
+	basicAuth := router.Group("/route2", BasicAuth(basicAuthAccounts)) // Custom
+
+	// Alternative : basicAuth.Use(gin.BasicAuth(basicAuthAccounts))
 	basicAuth.POST("/generate-token", func(ctx *gin.Context) {
 		username, _, _ := ctx.Request.BasicAuth()
 
