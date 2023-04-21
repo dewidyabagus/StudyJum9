@@ -1,0 +1,5 @@
+CLI Documentation :
+https://github.com/golang-migrate/migrate/tree/master/cmd/migrate
+
+Download Instalation :
+curl -L https://github.com/golang-migrate/migrate/releases/download/v4.15.2/migrate.linux-amd64.tar.gz | tar xvz
