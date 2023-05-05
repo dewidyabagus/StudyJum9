@@ -34,3 +34,6 @@ docker logs -f myservice
 
 # Masuk kedalam container
 docker exec -it myservice sh
+
+# Untuk menghapus image
+docker rmi <input name image>/<input id image>
