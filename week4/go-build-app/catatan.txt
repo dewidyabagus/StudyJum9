@@ -1,0 +1,36 @@
+Build Image Docker
+# -t : tag version
+# .  : menandakan lokasi file script dockerimage (Dockerfile)
+docker build -t myservice:1.0 .
+docker build -t myservice:1.1 -f ./Dockerfile.multi
+
+# Create Container
+docker create --name myservice --publish 8081:8080 myservice:1.0
+docker create --name myservice --memory 32m --cpus 0.1 --publish 8081:8080 myservice:1.0
+
+# Menjalankan Container
+docker start myservice
+
+# Melihat Container yang sedang berjalan
+docker ps / docker container ls
+
+# Melihat statistic container
+docker stats
+
+# Menon-aktifkan container
+docker stop myservice
+
+# Remove container
+docker rm myservice
+
+# Melihat detail informasi image 
+docker image inspect myservice:1.0
+
+# Mencetak log container
+docker logs myservice 
+
+# Mencetak log container live
+docker logs -f myservice 
+
+# Masuk kedalam container
+docker exec -it myservice sh
